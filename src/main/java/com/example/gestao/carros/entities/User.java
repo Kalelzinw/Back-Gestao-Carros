@@ -44,7 +44,7 @@ public class User {
     @OneToMany(mappedBy = "user") // Correção: "usuario" -> "user"
     private List<Vehicle> vehicles;
 
-    @ManyToMany
+    @ManyToMany 
     @JoinTable(
             name = "users_vehicles_favorites",
             joinColumns = @JoinColumn(name = "user_id"),

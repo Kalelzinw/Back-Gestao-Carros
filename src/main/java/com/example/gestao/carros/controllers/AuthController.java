@@ -1,4 +1,3 @@
-
 package com.example.gestao.carros.controllers;
 
 import java.util.Optional;
@@ -18,6 +17,7 @@ import com.example.gestao.carros.dto.RegisterRequestDTO;
 import com.example.gestao.carros.dto.ResponseDTO;
 
 import lombok.RequiredArgsConstructor;
+
 
 @RestController
 @RequestMapping("/auth")
@@ -44,15 +44,12 @@ public class AuthController {
 
         if(user.isEmpty()) {
             User newUser = new User();
-            newUser.setFotoUrl(body.fotoUrl());
-            newUser.setName(body.name());
+            newUser.setPassword(passwordEncoder.encode(body.password()));
             newUser.setEmail(body.email());
-            newUser.setCpf(body.cpf());
+            newUser.setName(body.name());
             newUser.setTel(body.tel());
             newUser.setDateBorn(body.dateBorn());
-            newUser.setPassword(passwordEncoder.encode(body.password()));
-            newUser.setCpassword(passwordEncoder.encode(body.cpassword()));
-           
+            newUser.setCpf(body.cpf());
             
             this.repository.save(newUser);
 
